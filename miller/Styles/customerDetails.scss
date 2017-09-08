@@ -1,0 +1,55 @@
+﻿#checkout-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px !important;
+
+    ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 40px 0px;
+
+        li {
+            margin-right: 20px;
+        }
+    }
+
+
+    h1, h2, h3 {
+        margin: 0px !important;
+    }
+
+    h1 {
+        margin-bottom: 20px !important;
+    }
+
+    div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 0px !important;
+
+        span:nth-child(1) {
+            margin-right: 10px;
+        }
+
+        input {
+            width: 100px !important;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .address-container {
+        display: flex;
+        flex-direction: column;
+
+        div {
+            display: flex;
+            flex-direction: row;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+﻿[
+  {
+    "outputFile": "Styles/base.css",
+    "inputFile": "Styles/base.scss"
+  },
+  {
+    "outputFile": "Styles/review.css",
+    "inputFile": "Styles/review.scss"
+  },
+  {
+    "outputFile": "Styles/customerDetails.css",
+    "inputFile": "Styles/customerDetails.scss"
+  }
+]

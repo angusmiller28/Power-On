@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="nav.ascx.cs" Inherits="miller0061072133.Partials.header" %>
+<asp:Xml ID="Xml1" runat="server" DocumentSource="~/Models/productlist.xml" TransformSource="~/Controllers/productCategoryNavController.xslt"></asp:Xml>

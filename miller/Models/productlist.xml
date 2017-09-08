@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<categorylist>
+  <category name="Storage">
+    <subcategory name="External Hard Drives">
+      <link>External Hard Drives</link>
+      <image>category-externalHardDrive.jpg</image>
+      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed erat mi. Praesent eu eros tortor. Cras a posuere tortor, molestie imperdiet nunc. Ut sagittis nisl neque, id commodo ipsum fermentum sed. Etiam tincidunt venenatis risus, at feugiat magna iaculis et. Sed sed sem nisi. </description>
+      <types>
+        <type name="Desktop">
+          <product>
+            <code>1-000-00-00</code>
+            <name>Desktop 100gb Harddrive</name>
+            <price>80.00</price>
+            <category>Storage</category>
+            <image>1.jpg</image>
+            <link>harddrive</link>
+            <description>The best harddrive ever. With 100gb it has enough space to store all of your favourite movies, photo and any other digital content you want.</description>
+            <subcategory>External Hard Drives</subcategory>
+            <type>Desktop</type>
+            <rating>4</rating>
+            <feature>True</feature>
+            <discount>False</discount>
+            <previousCost></previousCost>
+          </product>
+          <product>
+            <code>2-000-00-00</code>
+            <name>Desktop 90gb Harddrive</name>
+            <price>70.00</price>
+            <category>Storage</category>
+            <image>5.jpg</image>
+            <link>harddrive</link>
+            <description>The best harddrive ever. With 90gb it has enough space to store all of your favourite movies, photo and any other digital content you want.</description>
+            <subcategory>External Hard Drives</subcategory>
+            <type>Desktop</type>
+            <rating>3.5</rating>
+            <feature></feature>
+            <discount>False</discount>
+            <previousCost></previousCost>
+          </product>
+        </type>
+        <type name="Portable">
+          <product>
+            <code>0-000-00-00</code>
+            <name>Portable 254gb Harddrive</name>
+            <price>100.00</price>
+            <category>Storage</category>
+            <image>0.jpg</image>
+            <link>harddrive</link>
+            <description>The best harddrive ever. With 254gb it has enough space to store all of your favourite movies, photo and any other digital content you want.</description>
+            <subcategory>External Hard Drives</subcategory>
+            <type>Portable</type>
+            <rating>5</rating>
+            <feature>True</feature>
+            <discount>True</discount>
+            <previousCost>110.00</previousCost>
+          </product>
+        </type>
+      </types>
+    </subcategory>
+    <subcategory name="Internal Hard Drives">
+      <link>Internal Hard Drives</link>
+      <image>category-internalHardDrive.jpg</image>
+      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed erat mi. Praesent eu eros tortor. Cras a posuere tortor, molestie imperdiet nunc. Ut sagittis nisl neque, id commodo ipsum fermentum sed. Etiam tincidunt venenatis risus, at feugiat magna iaculis et. Sed sed sem nisi. </description>
+      <types>
+        <type name="2.5' Hard Drives">
+          <product>
+            <code>5-000-00-00</code>
+            <name>Internal 1tb Harddrive</name>
+            <price>100.00</price>
+            <category>Storage</category>
+            <image>7.jpg</image>
+            <link>harddrive</link>
+            <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed erat mi. Praesent eu eros tortor. Cras a posuere tortor, molestie imperdiet nunc.</description>
+            <subcategory>Internal Hard Drives</subcategory>
+            <type>2.5' Hard Drives</type>
+            <rating>3</rating>
+            <feature>True</feature>
+            <discount>True</discount>
+            <previousCost>110.00</previousCost>
+          </product>
+        </type>
+      </types>
+    </subcategory>
+  </category>
+
+  <category name="Hardware And Parts">
+    <subcategory name="Cases">
+      <link>Cases</link>
+      <image>category-cases.jpg</image>
+      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed erat mi. Praesent eu eros tortor. Cras a posuere tortor, molestie imperdiet nunc. Ut sagittis nisl neque, id commodo ipsum fermentum sed. Etiam tincidunt venenatis risus, at feugiat magna iaculis et. Sed sed sem nisi. </description>
+      <types>
+        <type name="ATX Cases">
+          <product>
+            <code>6-000-00-00</code>
+            <name>Cool Case</name>
+            <price>200.00</price>
+            <category>Hardware And Parts</category>
+            <image>10.jpg</image>
+            <link>Case</link>
+            <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed erat mi. Praesent eu eros tortor. Cras a posuere tortor, molestie imperdiet nunc.</description>
+            <subcategory>Cases</subcategory>
+            <type>ATX Cases</type>
+            <rating>4</rating>
+            <feature>True</feature>
+            <discount>False</discount>
+            <previousCost>140.00</previousCost>
+          </product>
+        </type>
+      </types>
+    </subcategory>
+    <subcategory name="Ram">
+      <link>Ram</link>
+      <image>category-ram.jpg</image>
+      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed erat mi. Praesent eu eros tortor. Cras a posuere tortor, molestie imperdiet nunc. Ut sagittis nisl neque, id commodo ipsum fermentum sed. Etiam tincidunt venenatis risus, at feugiat magna iaculis et. Sed sed sem nisi. </description>
+      <types>
+        <type name="DDR3">
+          <product>
+            <code>4-000-00-00</code>
+            <name>8gb Vengence DDR3 Ram</name>
+            <price>110.00</price>
+            <category>Hardware And Parts</category>
+            <image>4.jpg</image>
+            <link>ram</link>
+            <description>The best ram ever. With 8gb ddr3 it is super fast to most effectively utilise your cpu.</description>
+            <subcategory>Ram</subcategory>
+            <type>DDR3</type>
+            <rating>5</rating>
+            <feature>True</feature>
+            <discount>True</discount>
+            <previousCost>120.00</previousCost>
+          </product>
+        </type>
+        <type name="DDR4">
+          <product>
+            <code>3-000-00-00</code>
+            <name>16gb Vengence DDR4 Ram</name>
+            <price>110.00</price>
+            <category>Hardware And Parts</category>
+            <image>4.jpg</image>
+            <link>ram</link>
+            <description>The best ram ever. With 16gb ddr4 it is super fast to most effectively utilise your cpu.</description>
+            <subcategory>Ram</subcategory>
+            <type>DDR4</type>
+            <rating>5</rating>
+            <feature>True</feature>
+            <discount>True</discount>
+            <previousCost>120.00</previousCost>
+          </product>
+        </type>
+      </types>
+    </subcategory>
+  </category>
+</categorylist>

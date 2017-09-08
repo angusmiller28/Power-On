@@ -1,0 +1,48 @@
+$color-text: #999999;
+$color-background: #333333;
+
+#footer {
+  background-color: $color-background !important;
+  color: $color-text !important;
+  section {
+    margin: 10px 25px;
+    ul {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  #copyright-bar {
+    padding: 10px;
+    margin: 20px 0px 0px 0px;
+    background-color: #443266;
+    color: white;
+    text-align: center;
+  }
+  li:nth-child(1) {
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+  li {
+    margin-bottom: 8px;
+  }
+}
+
+
+
+// Tablet Size
+@media (min-width:  747px){
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+// Desktop Size
+@media (min-width: 1024px) {
+
+}
+// Desktop HD Size
+@media (min-width: 1440px) {
+
+}
