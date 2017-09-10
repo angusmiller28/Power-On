@@ -1,5 +1,7 @@
-﻿using System;
+﻿using miller;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,13 +12,15 @@ namespace miller0061072133.Partials
 {
     public partial class header1 : System.Web.UI.UserControl
     {
-        Customer customer;
+        User user;
         protected void Page_Load(object sender, EventArgs e)
         {
-            customer = (Customer)Session["customer"];
+            user = (User)Session["user"];
 
-            if (Session["customer"] != null && customer.GetID() != null)
+            if (Session["user"] != null)
             {
+                Debug.WriteLine("User is full ************************");
+
                 HtmlGenericControl ul = new HtmlGenericControl("ul");
                 HtmlGenericControl ul_inner = new HtmlGenericControl("ul");
                 HtmlGenericControl li = new HtmlGenericControl("li");
@@ -30,7 +34,7 @@ namespace miller0061072133.Partials
                 // Set data
                 myAccount.Text = "My Account";
                 profile_icon.ImageUrl = "#";
-                button_link.InnerText = "View Profile";
+                button_link.InnerText = "View Profile" + user.GetUsername();
 
                 // Set Attributes
                 li.Attributes.Add("class", "navbar-title");
@@ -52,7 +56,7 @@ namespace miller0061072133.Partials
             }
             else
             {
-
+                Debug.WriteLine("User is null ************************");
             }
                 
         }

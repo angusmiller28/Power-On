@@ -139,6 +139,60 @@ namespace miller0061072133.Views {
         protected global::System.Web.UI.WebControls.Label txt_address;
         
         /// <summary>
+        /// lbl_shipping_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_shipping_name;
+        
+        /// <summary>
+        /// txt_shipping_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txt_shipping_name;
+        
+        /// <summary>
+        /// lbl_shipping_email_address control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_shipping_email_address;
+        
+        /// <summary>
+        /// txt_shipping_email_address control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txt_shipping_email_address;
+        
+        /// <summary>
+        /// lbl_shipping_address control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_shipping_address;
+        
+        /// <summary>
+        /// txt_shipping_address control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txt_shipping_address;
+        
+        /// <summary>
         /// lbl_cardholders_name control.
         /// </summary>
         /// <remarks>

@@ -102,6 +102,10 @@ namespace miller0061072133.Views
             // customer details
             txt_name.Text = customer.GetName();
             txt_address.Text = customer.GetAddress();
+            txt_shipping_name.Text = customer.GetNameShipping();
+            txt_shipping_address.Text = customer.GetShippingAddress();
+            txt_email_address.Text = customer.GetEmail();
+            txt_shipping_email_address.Text = customer.GetEmailShipping();
 
             // payment details
             txt_cardholders_name.Text = customer.GetCardHoldersName();
@@ -109,7 +113,7 @@ namespace miller0061072133.Views
             txt_card_start_date.Text = customer.GetCardStartDate();
             txt_card_end_date.Text = customer.GetCardEndDate();
             txt_card_issue_number.Text = customer.GetCardIssueNumber();
-            txt_email_address.Text = customer.GetEmail();
+            
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
@@ -143,9 +147,8 @@ namespace miller0061072133.Views
                 cmd.Parameters.AddWithValue("@customerID", customer.GetID());
                 Int32 count = (Int32)cmd.ExecuteScalar();
 
-                Debug.WriteLine("is customer created ***********************" + count + "id: " + customer.GetID());
                 if (count == 0) { 
-                    string insertQuery = "insert into Customers(ID, Title, FirstName, MiddleName, LastName, EmailAddress, Country, State, City, Suburb, Postcode, StreetType, StreetName, UnitNumber, PropertyName, CardholdersName, CardNumber, StartDate, EndDate, IssueNumber) values (@ID, @Title, @FirstName, @MiddleName, @LastName, @EmailAddress, @Country, @State, @City, @Suburb, @Postcode, @StreetType, @StreetName, @UnitNumber, @PropertyName, @CardholdersName, @CardNumber, @StartDate, @EndDate, @IssueNumber)";
+                    string insertQuery = "insert into Customers(ID, Title, FirstName, MiddleName, LastName, EmailAddress, Country, State, City, Suburb, Postcode, StreetType, StreetName, UnitNumber, PropertyName, ShippingTitle, ShippingFirstName, ShippingMiddleName, ShippingLastName, ShippingEmailAddress, ShippingCountry, ShippingState, ShippingCity, ShippingSuburb, ShippingPostcode, ShippingStreetType, ShippingStreetName, ShippingUnitNumber, ShippingPropertyName, CardholdersName, CardNumber, StartDate, EndDate, IssueNumber) values (@ID, @Title, @FirstName, @MiddleName, @LastName, @EmailAddress, @Country, @State, @City, @Suburb, @Postcode, @StreetType, @StreetName, @UnitNumber, @PropertyName, @ShippingTitle, @ShippingFirstName, @ShippingMiddleName, @ShippingLastName, @ShippingEmailAddress, @ShippingCountry, @ShippingState, @ShippingCity, @ShippingSuburb, @ShippingPostcode, @ShippingStreetType, @ShippingStreetName, @ShippingUnitNumber, @ShippingPropertyName, @CardholdersName, @CardNumber, @StartDate, @EndDate, @IssueNumber)";
                     cmd = new SqlCommand(insertQuery, conn);
                     cmd.Parameters.AddWithValue("@ID", customer.GetID());
                     cmd.Parameters.AddWithValue("@Title", customer.GetTitle());
@@ -162,17 +165,34 @@ namespace miller0061072133.Views
                     cmd.Parameters.AddWithValue("@StreetName", customer.GetStreetName());
                     cmd.Parameters.AddWithValue("@UnitNumber", customer.GetUnitNumber());
                     cmd.Parameters.AddWithValue("@PropertyName", customer.GetPropertyName());
+
+                    cmd.Parameters.AddWithValue("@ShippingTitle", customer.GetTitleShipping());
+                    cmd.Parameters.AddWithValue("@ShippingFirstName", customer.GetFirstNameShipping());
+                    cmd.Parameters.AddWithValue("@ShippingMiddleName", customer.GetMiddleNameShipping());
+                    cmd.Parameters.AddWithValue("@ShippingLastName", customer.GetLastNameShipping());
+                    cmd.Parameters.AddWithValue("@ShippingEmailAddress", customer.GetEmailShipping());
+                    cmd.Parameters.AddWithValue("@ShippingCountry", customer.GetCountryShipping());
+                    cmd.Parameters.AddWithValue("@ShippingState", customer.GetStateShipping());
+                    cmd.Parameters.AddWithValue("@ShippingCity", customer.GetCityShipping());
+                    cmd.Parameters.AddWithValue("@ShippingSuburb", customer.GetSuburbShipping());
+                    cmd.Parameters.AddWithValue("@ShippingPostcode", customer.GetPostcodeShipping());
+                    cmd.Parameters.AddWithValue("@ShippingStreetType", customer.GetStreetTypeShipping());
+                    cmd.Parameters.AddWithValue("@ShippingStreetName", customer.GetStreetNameShipping());
+                    cmd.Parameters.AddWithValue("@ShippingUnitNumber", customer.GetUnitNumberShipping());
+                    cmd.Parameters.AddWithValue("@ShippingPropertyName", customer.GetPropertyNameShipping());
+
                     cmd.Parameters.AddWithValue("@CardholdersName", customer.GetCardHoldersName());
                     cmd.Parameters.AddWithValue("@CardNumber", customer.GetCardNumber());
                     cmd.Parameters.AddWithValue("@StartDate", customer.GetCardStartDate());
                     cmd.Parameters.AddWithValue("@EndDate", customer.GetCardEndDate());
                     cmd.Parameters.AddWithValue("@IssueNumber", customer.GetCardIssueNumber());
+
                     cmd.ExecuteNonQuery();
                 }
                 // add customers order to database
                 for (int i=0; i <= myCart.GetItems().Count-1; i++)
                 {
-                    string insertQuery = "insert into Orders(CustomerID, ProductName, ProductImage, ProductPrice, ProductQuantity, ProductTotalPrice) values (@CustomerID, @ProductName, @ProductImage, @ProductPrice, @ProductQuantity, @ProductTotalPrice)";
+                    string insertQuery = "insert into Orders(CustomerID, ProductName, ProductImage, ProductPrice, ProductQuantity, ProductTotalPrice, OrderDate) values (@CustomerID, @ProductName, @ProductImage, @ProductPrice, @ProductQuantity, @ProductTotalPrice, @OrderDate)";
                     cmd = new SqlCommand(insertQuery, conn);
                     cmd.Parameters.AddWithValue("@CustomerID", customer.GetID());
                     cmd.Parameters.AddWithValue("@ProductName", myCart.GetItems()[i].GetName());
@@ -180,6 +200,7 @@ namespace miller0061072133.Views
                     cmd.Parameters.AddWithValue("@ProductPrice", myCart.GetItems()[i].GetPrice());
                     cmd.Parameters.AddWithValue("@ProductQuantity", myCart.GetItems()[i].GetQuantity());
                     cmd.Parameters.AddWithValue("@ProductTotalPrice", myCart.GetItems()[i].GetQuantity() * myCart.GetItems()[i].GetPrice());
+                    cmd.Parameters.AddWithValue("@OrderDate", DateTime.Now);
                     cmd.ExecuteNonQuery();
                 }
                 

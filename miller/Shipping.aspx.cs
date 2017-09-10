@@ -1,24 +1,20 @@
-﻿using System;
-using System.Text.RegularExpressions;
+﻿using miller0061072133;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Diagnostics;
-using miller;
 
-namespace miller0061072133.Views
+namespace miller
 {
-    public partial class Checkout : System.Web.UI.Page
+    public partial class Shipping : System.Web.UI.Page
     {
         Customer customer;
         Cart myCart;
         Validation validate = new Validation();
-
         protected void Page_Load(object sender, EventArgs e)
         {
-
             myCart = (Cart)Session["myCart"];
 
             // validate customer has items in cart
@@ -35,36 +31,8 @@ namespace miller0061072133.Views
 
             if (Session["customer"] == null)
             {
-                Session["customer"] = new Customer();
-            } else 
-            {
-                // let customer know that they have add customer detail already, do they want to use new details or
-                // use current
-                Label mess = new Label();
-                Label lbl_email = new Label();
-                Label lbl_name = new Label();
-                Label lbl_address = new Label();
-                Button btnUseCurrent = new Button();
-
-                btnUseCurrent.Click += new EventHandler (this.btnUseCurrent_Click);
-
-                mess.Text = "Hey you have already create an account! Did you want to use this account?";
-                btnUseCurrent.Text = "Use current account";
-
-                // get customer data for session
-                lbl_email.Text = "Email: " + customer.GetEmail();
-                lbl_name.Text = "Name: " + customer.GetName();
-                lbl_address.Text = "Address: " + customer.GetAddress();
-
-                
-                customerContainer.Controls.Add(mess);
-                customerContainer.Controls.Add(btnUseCurrent);
-                customerContainer.Controls.Add(lbl_name);
-                customerContainer.Controls.Add(lbl_address);
-                customerContainer.Controls.Add(lbl_email);
-
+                Response.Redirect("Checkout.aspx");
             }
-
 
             if (!IsPostBack) //check if the webpage is loaded for the first time.
             {
@@ -81,16 +49,6 @@ namespace miller0061072133.Views
             }
         }
 
-        protected void btnUseCurrent_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Review.aspx");
-        }
-
-        protected void btnUseNew_Click(object sender, EventArgs e)
-        {
-            Session["customer"] = new Customer();
-        }
-
         protected void btnBack_Click(object sender, EventArgs e)
         {
             if (ViewState["PreviousPage"] != null)  //Check if the ViewState 
@@ -100,7 +58,6 @@ namespace miller0061072133.Views
                                                                         //Previous page by retrieving the PreviousPage Url from ViewState.
             }
         }
-
 
         protected void btn_next_click(object sender, EventArgs e)
         {
@@ -140,26 +97,20 @@ namespace miller0061072133.Views
             // save customer data to session
             if (validate.AllValid)
             {
-                customer.Insert(new Customer(title, fname, mname, lname, country, state, city, suburb, postcode, streetType, streetName, unitNumber, propertyName, email));
-                if (chk_use_billing_data.Checked)
-                {
-                    customer.AddShippingData(title, fname, mname, lname, email, country, state, city, suburb, postcode, streetType, streetName, unitNumber, propertyName);
-                    Response.Redirect("Payment.aspx");
-                } else {
-                    Response.Redirect("Shipping.aspx");
-                }
-            } else
+                customer.AddShippingData(title, fname, mname, lname, email, country, state, city, suburb, postcode, streetType, streetName, unitNumber, propertyName);
+                Response.Redirect("Payment.aspx");      
+            }
+            else
             {
                 // add all invalid data error messsages to a label and add to checkout view
-                for (int i=0; i <= validate.GetErrorMessages().Count-1;i++)
+                for (int i = 0; i <= validate.GetErrorMessages().Count - 1; i++)
                 {
                     Label lbl = new Label();
                     lbl.Text = validate.GetErrorMessages()[i];
                     error_messages.Controls.Add(lbl);
                 }
-                
             }
         }
-
     }
+
 }

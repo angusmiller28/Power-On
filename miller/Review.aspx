@@ -49,6 +49,7 @@
                        </div>
                        <div id="customer-info-container">          
                           <h3>Customer Details</h3>
+                          <h3>Billing Details</h3>
                            <div>
                               <asp:Label ID="lbl_name" runat="server" Text="Full Name"></asp:Label>
                               <asp:Label ID="txt_name" runat="server"></asp:Label>
@@ -62,6 +63,19 @@
                              <asp:Label ID="txt_address" runat="server"></asp:Label>
                            </div>
 
+                           <h3>Shipping Details</h3>
+                           <div>
+                              <asp:Label ID="lbl_shipping_name" runat="server" Text="Full Name"></asp:Label>
+                              <asp:Label ID="txt_shipping_name" runat="server"></asp:Label>
+                           </div>
+                           <div>
+                              <asp:Label ID="lbl_shipping_email_address" runat="server" Text="Email Address"></asp:Label>
+                              <asp:Label ID="txt_shipping_email_address" runat="server"></asp:Label>
+                           </div>
+                           <div>
+                             <asp:Label ID="lbl_shipping_address" runat="server" Text="Address"></asp:Label>
+                             <asp:Label ID="txt_shipping_address" runat="server"></asp:Label>
+                           </div>
                           
                       </div>
                       <div id="payment-info-container">

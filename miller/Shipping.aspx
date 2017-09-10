@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Checkout.aspx.cs" Inherits="miller0061072133.Views.Checkout" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Shipping.aspx.cs" Inherits="miller.Shipping" %>
 
 <%@ Register src="~/Partials/header.ascx" tagname="header" tagprefix="uc1" %>
 <%@ Register src="~/Partials/nav.ascx" tagname="nav" tagprefix="uc2" %>
@@ -9,12 +9,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link href="Styles/customerDetails.min.css" rel="stylesheet" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head> 
+</head>
 <body>
     <form id="form1" runat="server">
-       <div id="container">
+        <div id="container">
        <uc1:header ID="header1" runat="server" />
             <nav id="subnav">
               <uc2:nav ID="nav1" runat="server" />
@@ -35,7 +33,7 @@
                 <asp:PlaceHolder ID="customerContainer" runat="server"></asp:PlaceHolder>
               <section id="checkout-container">
                   
-                      <h1>Billing information</h1>
+                      <h1>Shipping Information</h1>
 
                   <asp:PlaceHolder ID="error_messages" runat="server"></asp:PlaceHolder>
                         <div>
@@ -99,10 +97,6 @@
                             <div>
                                 <asp:Label ID="lbl_property_name" runat="server" Text="Property Name"></asp:Label>
                                 <asp:TextBox ID="txt_property_name" runat="server"></asp:TextBox>
-                            </div>
-                            <div>
-                                <asp:Label ID="lbl_use_billing_data" runat="server" Text="Use billing details as shipping"></asp:Label>
-                                <asp:CheckBox ID="chk_use_billing_data" runat="server"/>
                             </div>
                             
                           </div>

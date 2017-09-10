@@ -20,9 +20,23 @@ namespace miller0061072133
         private string Postcode { get; set; }
         private string StreetType { get; set; }
         private string StreetName { get; set; }
-        private string ID { get; set; }
         private string StreetNumber { get; set; }
         private string PropertyName { get; set; }
+        private string ShippingTitle { get; set; }
+        private string ShippingFname { get; set; }
+        private string ShippingMname { get; set; }
+        private string ShippingLname { get; set; }
+        private string ShippingEmail { get; set; }
+        private string ShippingCountry { get; set; }
+        private string ShippingState { get; set; }
+        private string ShippingCity { get; set; }
+        private string ShippingSuburb { get; set; }
+        private string ShippingPostcode { get; set; }
+        private string ShippingStreetType { get; set; }
+        private string ShippingStreetName { get; set; }
+        private string ShippingStreetNumber { get; set; }
+        private string ShippingPropertyName { get; set; }
+        private string ID { get; set; }
         private string Email { get; set; }
         private string CardHoldersName { get; set; }
         private string CardNumber { get; set; }
@@ -78,6 +92,24 @@ namespace miller0061072133
             this.CardIssueNumber = cardIssueNumber;
         }
 
+        public void AddShippingData(string ShippingTitle, string ShippingFname, string ShippingMname, string ShippingLname, string ShippingEmail, string ShippingCountry, string ShippingState, string ShippingCity, string ShippingSuburb, string ShippingPostcode, string ShippingStreetType, string ShippingStreetName, string ShippingStreetNumber, string ShippingPropertyName)
+        {
+            this.ShippingTitle = ShippingTitle;
+            this.ShippingFname = ShippingFname;
+            this.ShippingMname = ShippingMname;
+            this.ShippingLname = ShippingLname;
+            this.ShippingEmail = ShippingEmail;
+            this.ShippingCountry = ShippingCountry;
+            this.ShippingState = ShippingState;
+            this.ShippingCity = ShippingCity;
+            this.ShippingSuburb = ShippingSuburb;
+            this.ShippingPostcode = ShippingPostcode;
+            this.ShippingStreetName = ShippingStreetName;
+            this.ShippingStreetType = ShippingStreetType;
+            this.ShippingStreetNumber = ShippingStreetNumber;
+            this.ShippingPropertyName = ShippingPropertyName;
+        }
+
         public void Insert(Customer customer)
         {
             this.ID = customer.ID;
@@ -97,6 +129,11 @@ namespace miller0061072133
             this.PropertyName = customer.PropertyName;
         }
 
+        public string GetID()
+        {
+            return this.ID;
+        }
+
         public string GetAddress()
         {
             return this.StreetNumber + " " + this.StreetName + " " + this.StreetType + " " + this.Suburb + " " + this.City + " " + this.State + " " + this.Country;
@@ -105,11 +142,6 @@ namespace miller0061072133
         public string GetName()
         {
             return this.Title + " " + this.Fname + " " + Mname + " " + Lname;
-        }
-
-        public string GetID()
-        {
-            return this.ID;
         }
 
         public string GetTitle()
@@ -180,6 +212,86 @@ namespace miller0061072133
         public string GetPropertyName()
         {
             return this.PropertyName;
+        }
+
+        public string GetShippingAddress()
+        {
+            return this.ShippingStreetNumber + " " + this.ShippingStreetName + " " + this.ShippingStreetType + " " + this.ShippingSuburb + " " + this.ShippingCity + " " + this.ShippingState + " " + this.ShippingCountry;
+        }
+
+        public string GetNameShipping()
+        {
+            return this.ShippingTitle + " " + this.ShippingFname + " " + ShippingMname + " " + ShippingLname;
+        }
+
+        public string GetTitleShipping()
+        {
+            return this.ShippingTitle;
+        }
+
+        public string GetFirstNameShipping()
+        {
+            return this.ShippingFname;
+        }
+
+        public string GetMiddleNameShipping()
+        {
+            return this.ShippingMname;
+        }
+
+        public string GetLastNameShipping()
+        {
+            return this.ShippingLname;
+        }
+
+        public string GetEmailShipping()
+        {
+            return this.ShippingEmail;
+        }
+
+        public string GetCountryShipping()
+        {
+            return this.ShippingCountry;
+        }
+
+        public string GetStateShipping()
+        {
+            return this.ShippingState;
+        }
+
+        public string GetCityShipping()
+        {
+            return this.ShippingCity;
+        }
+
+        public string GetSuburbShipping()
+        {
+            return this.ShippingSuburb;
+        }
+
+        public string GetPostcodeShipping()
+        {
+            return this.ShippingPostcode;
+        }
+
+        public string GetStreetTypeShipping()
+        {
+            return this.ShippingStreetType;
+        }
+
+        public string GetStreetNameShipping()
+        {
+            return this.ShippingStreetName;
+        }
+
+        public string GetUnitNumberShipping()
+        {
+            return this.ShippingStreetNumber;
+        }
+
+        public string GetPropertyNameShipping()
+        {
+            return this.ShippingPropertyName;
         }
 
         public string GetCardHoldersName()
