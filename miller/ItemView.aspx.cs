@@ -49,16 +49,23 @@ namespace miller0061072133
             // Add review section
             ///////////////////////
             HtmlGenericControl container = new HtmlGenericControl("div");
-            HtmlGenericControl rating = new HtmlGenericControl("input");
+            
             HtmlGenericControl comment = new HtmlGenericControl("textarea");
 
             // Set attributes
-            rating.Attributes.Add("type", "text");
+            for(int i=0; i<5; i++)
+            {
+                HtmlGenericControl rating = new HtmlGenericControl("i");
+                rating.Attributes.Add("class", "fa fa-star-o");
+                rating.Attributes.Add("aria-hidden", "true");
+                container.Controls.Add(rating);
+            }
+            
 
-            rating.InnerText = "Rating";
+            //rating.InnerText = "Rating";
             comment.InnerText = "This is a comment";
 
-            container.Controls.Add(rating);
+            
             container.Controls.Add(comment);
 
             addReviewContainer.Controls.Add(container);
@@ -100,7 +107,7 @@ namespace miller0061072133
 
         protected void btn_Add_Review_Click(object sender, EventArgs e)
         {
-            
+            // add review to database with the product id, user, comment etc
         }
 
         protected void Button_Click1(object sender, EventArgs e)
