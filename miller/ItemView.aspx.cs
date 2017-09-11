@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -108,6 +111,31 @@ namespace miller0061072133
         protected void btn_Add_Review_Click(object sender, EventArgs e)
         {
             // add review to database with the product id, user, comment etc
+            try
+            {
+
+                
+            
+                // datebase connection 
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["CustomerConnectionString"].ConnectionString);
+                conn.Open();
+
+                string insertQuery = "insert into Review(UserID, ProductID, Comment, Rating) values (@UserID, @ProductID, @Comment, @Rating)";
+                SqlCommand cmd = new SqlCommand(insertQuery, conn);
+                cmd.Parameters.AddWithValue("@UserID", 1);
+                cmd.Parameters.AddWithValue("@ProductID", "1000-0000-000");
+                cmd.Parameters.AddWithValue("@Comment", "First Comment");
+                cmd.Parameters.AddWithValue("@Rating", "6");
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("error" + ex.ToString());
+            }
         }
 
         protected void Button_Click1(object sender, EventArgs e)
