@@ -12,15 +12,20 @@ using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using System.Xml.Xsl;
+using miller;
 
 namespace miller0061072133
 {
     public partial class ItemView : System.Web.UI.Page
     {
         Cart myCart;
+        User user;
         string result;
+        TextBox comment = new TextBox();
+
         protected void Page_Init(object sender, EventArgs e)
         {
+            user = (User)Session["user"];
             string man_ID = get_productID();
 
             //create argument list
@@ -46,49 +51,101 @@ namespace miller0061072133
             AddReviewsSection();
         }
 
+        protected bool LoggedIn(){
+			
+
+			// validate customer has items in cart
+			if (user == null)
+			{
+                return false;
+			}
+
+            return true;
+        }
+
         protected void AddReviewsSection()
         {
-            ///////////////////////
-            // Add review section
-            ///////////////////////
-            HtmlGenericControl container = new HtmlGenericControl("div");
-            
-            HtmlGenericControl comment = new HtmlGenericControl("textarea");
-
-            // Set attributes
-            for(int i=0; i<5; i++)
+            // check if user is logged in
+            if (LoggedIn())
             {
-                HtmlGenericControl rating = new HtmlGenericControl("i");
-                rating.Attributes.Add("class", "fa fa-star-o");
-                rating.Attributes.Add("aria-hidden", "true");
-                container.Controls.Add(rating);
+                ///////////////////////
+                // Add review section
+                ///////////////////////
+                HtmlGenericControl container = new HtmlGenericControl("div");
+
+                // Set attributes
+                for (int i = 0; i < 5; i++)
+                {
+                    HtmlGenericControl rating = new HtmlGenericControl("i");
+                    rating.Attributes.Add("class", "fa fa-star-o");
+                    rating.Attributes.Add("aria-hidden", "true");
+                    container.Controls.Add(rating);
+                }
+
+                comment.Text = "This is a comment";
+
+
+                container.Controls.Add(comment);
+
+                addReviewContainer.Controls.Add(container);
             }
-            
 
-            //rating.InnerText = "Rating";
-            comment.InnerText = "This is a comment";
+			///////////////////////
+			// Users Review section
+			///////////////////////
+			try
+			{
 
-            
-            container.Controls.Add(comment);
+				// datebase connection 
+				SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["CustomerConnectionString"].ConnectionString);
+				conn.Open();
 
-            addReviewContainer.Controls.Add(container);
+				string insertQuery = "select Username, Comment, Rating from Review where ProductID = @pageID";
+				SqlCommand cmd = new SqlCommand(insertQuery, conn);
+				cmd.Parameters.AddWithValue("@pageID", get_productID());
+                SqlDataReader reader = cmd.ExecuteReader();
 
-            ///////////////////////
-            // Users Review section
-            ///////////////////////
-            container = new HtmlGenericControl("div");
-            HtmlGenericControl name = new HtmlGenericControl("h2");
-            comment = new HtmlGenericControl("p");
+				while (reader.Read())
+				{
 
-            name.InnerText = "Angus Miller";
-            comment.InnerText = "This is a comment";
+					HtmlGenericControl container2 = new HtmlGenericControl("div");
+					HtmlGenericControl username = new HtmlGenericControl("h2");
+					HtmlGenericControl comment = new HtmlGenericControl("p");
 
-            container.Controls.Add(name);
-            container.Controls.Add(comment);
+					username.InnerText = (string)reader["Username"];
+					comment.InnerText = (string)reader["Comment"];
 
-            // attributes
-            container.ID = "product-review-card";
-            reviewContainer.Controls.Add(container);
+					// Set attributes
+					for (int i = 0; i < 5; i++)
+					{
+						HtmlGenericControl rating = new HtmlGenericControl("i");
+						rating.Attributes.Add("class", "fa fa-star-o");
+						rating.Attributes.Add("aria-hidden", "true");
+						container2.Controls.Add(rating);
+					}
+
+					container2.Controls.Add(username);
+					container2.Controls.Add(comment);
+
+					// attributes
+					container2.ID = "product-review-card";
+					reviewContainer.Controls.Add(container2);
+
+				}
+
+				reader.NextResult();
+
+				
+				conn.Close();
+
+
+			}
+			catch (Exception ex)
+			{
+				Debug.WriteLine("error" + ex.ToString());
+			}
+
+
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -98,6 +155,7 @@ namespace miller0061072133
                 ViewState["PreviousPage"] = Request.UrlReferrer;//Saves the Previous page url in ViewState
             }
         }
+
         protected void btnBack_Click(object sender, EventArgs e)
         {
             if (ViewState["PreviousPage"] != null)  //Check if the ViewState 
@@ -110,31 +168,33 @@ namespace miller0061072133
 
         protected void btn_Add_Review_Click(object sender, EventArgs e)
         {
-            // add review to database with the product id, user, comment etc
-            try
+            if (LoggedIn())
             {
+                string username = user.GetUsername();
+                // add review to database with the product id, user, comment etc
+                try
+                {
 
-                
-            
-                // datebase connection 
-                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["CustomerConnectionString"].ConnectionString);
-                conn.Open();
+                    // datebase connection 
+                    SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["CustomerConnectionString"].ConnectionString);
+                    conn.Open();
 
-                string insertQuery = "insert into Review(UserID, ProductID, Comment, Rating) values (@UserID, @ProductID, @Comment, @Rating)";
-                SqlCommand cmd = new SqlCommand(insertQuery, conn);
-                cmd.Parameters.AddWithValue("@UserID", 1);
-                cmd.Parameters.AddWithValue("@ProductID", "1000-0000-000");
-                cmd.Parameters.AddWithValue("@Comment", "First Comment");
-                cmd.Parameters.AddWithValue("@Rating", "6");
-                cmd.ExecuteNonQuery();
+                    string insertQuery = "insert into Review(Username, ProductID, Comment, Rating) values (@Username, @ProductID, @Comment, @Rating)";
+                    SqlCommand cmd = new SqlCommand(insertQuery, conn);
+                    cmd.Parameters.AddWithValue("@Username", username);
+                    cmd.Parameters.AddWithValue("@ProductID", get_productID());
+                    cmd.Parameters.AddWithValue("@Comment", comment.Text);
+                    cmd.Parameters.AddWithValue("@Rating", "6");
+                    cmd.ExecuteNonQuery();
 
-                conn.Close();
+                    conn.Close();
 
 
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("error" + ex.ToString());
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine("error" + ex.ToString());
+                }
             }
         }
 
