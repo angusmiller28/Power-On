@@ -1,6 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <categorylist>
+  <filter>
+    <filterGroupMain>
+      <optionTitle>Availability</optionTitle>
+      <option>In stock at Supplier+In stock at PowerOn</option>
+    </filterGroupMain>
+    <filterGroup>
+      <optionTitle>Brand</optionTitle>
+      <option>Test</option>
+    </filterGroup>
+  </filter>
   <category name="Storage">
+    <filter>
+      <filterGroupStorage>
+        <optionTitle>Capacity</optionTitle>
+        <option>120TB (1)+12TB (3)</option>
+      </filterGroupStorage>
+    </filter>
     <subcategory name="External Hard Drives">
       <link>External Hard Drives</link>
       <image>category-externalHardDrive.jpg</image>

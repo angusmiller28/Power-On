@@ -49,6 +49,15 @@ namespace miller0061072133 {
         protected global::System.Web.UI.WebControls.Button btnBack;
         
         /// <summary>
+        /// navFilter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder navFilter;
+        
+        /// <summary>
         /// Placeholder1 control.
         /// </summary>
         /// <remarks>

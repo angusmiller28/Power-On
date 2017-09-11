@@ -34,6 +34,43 @@ namespace miller
                 Response.Redirect("Checkout.aspx");
             }
 
+            if (customer != null && customer.GetTitleShipping() != null)
+            {
+                // let customer know that they have add customer detail already, do they want to use new details or
+                // use current
+                Label mess = new Label();
+                Label lbl_email = new Label();
+                Label lbl_shipping_email = new Label();
+                Label lbl_name = new Label();
+                Label lbl_address = new Label();
+                Label lbl_name_shipping = new Label();
+                Label lbl_address_shipping = new Label();
+                Button btnUseCurrent = new Button();
+
+                btnUseCurrent.Click += new EventHandler(this.btnUseCurrent_Click);
+
+                mess.Text = "Hey you have already add your details! Did you want to use these details?";
+                btnUseCurrent.Text = "Use current details";
+
+                // get customer data for session
+                lbl_email.Text = "Email: " + customer.GetEmail();
+                lbl_name.Text = "Name: " + customer.GetName();
+                lbl_address.Text = "Address: " + customer.GetAddress();
+                lbl_email.Text = "Shipping Email: " + customer.GetEmailShipping();
+                lbl_name_shipping.Text = "Shipping Name: " + customer.GetNameShipping();
+                lbl_address_shipping.Text = "Shipping Address: " + customer.GetShippingAddress();
+
+                customerContainer.Controls.Add(mess);
+                customerContainer.Controls.Add(btnUseCurrent);
+                customerContainer.Controls.Add(lbl_name);
+                customerContainer.Controls.Add(lbl_address);
+                customerContainer.Controls.Add(lbl_email);
+                customerContainer.Controls.Add(lbl_name_shipping);
+                customerContainer.Controls.Add(lbl_address_shipping);
+                customerContainer.Controls.Add(lbl_shipping_email);
+
+            }
+
             if (!IsPostBack) //check if the webpage is loaded for the first time.
             {
                 ViewState["PreviousPage"] = Request.UrlReferrer;//Saves the Previous page url in ViewState
@@ -47,6 +84,11 @@ namespace miller
                 lst_street_type.Items.Add("DR");
                 lst_street_type.Items.Add("AVE");
             }
+        }
+
+        protected void btnUseCurrent_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Review.aspx");
         }
 
         protected void btnBack_Click(object sender, EventArgs e)

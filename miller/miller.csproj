@@ -61,6 +61,7 @@
     <Content Include="App_Data\Store_log.ldf">
       <DependentUpon>Store.mdf</DependentUpon>
     </Content>
+    <Content Include="Controllers\filterController.xslt" />
     <Content Include="Login.aspx" />
     <Content Include="ProccessedPayment.aspx" />
     <Content Include="Shipping.aspx" />
@@ -154,6 +155,7 @@
     <Content Include="Test.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Filter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

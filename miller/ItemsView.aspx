@@ -53,39 +53,8 @@
             </div>
             <div id="navigation-filter-controls">
               <ul id="nav-filter">
-
-                <ul>
-                  <li>Availability <i class="fa fa-chevron-down" aria-hidden="true"></i></li>
-                  <li><input type="checkbox" name="" value="">In stock at PowerOn</li>
-                  <li><input type="checkbox" name="" value="">In stock at Supplier</li>
-                </ul>
-
-                <ul>
-                  <li>Brand <i class="fa fa-chevron-down" aria-hidden="true"></i></li>
-                  <li><input type="checkbox" name="" value="">Seagate (8)</li>
-                  <li><input type="checkbox" name="" value="">Western Digital (36)</li>
-                  <li><input type="checkbox" name="" value="">Silicon Power (2)</li>
-                  <li><input type="checkbox" name="" value="">Promise (1)</li>
-                  <li class="nav-filter-more"><i class="fa fa-chevron-down" aria-hidden="true"></i>Show more</li>
-                </ul>
-
-                <ul>
-                  <li>Capacity <i class="fa fa-chevron-down" aria-hidden="true"></i></li>
-                  <li><input type="checkbox" name="" value="">120TB (1)</li>
-                  <li><input type="checkbox" name="" value="">12TB (3)</li>
-                  <li><input type="checkbox" name="" value="">16TB (2)</li>
-                  <li><input type="checkbox" name="" value="">1TB (5)</li>
-                  <li class="nav-filter-more"><i class="fa fa-chevron-down" aria-hidden="true"></i>Show more</li>
-                </ul>
-
-                <ul>
-                  <li>USB Interface <i class="fa fa-chevron-down" aria-hidden="true"></i></li>
-                  <li><input type="checkbox" name="" value="">No (1)</li>
-                  <li><input type="checkbox" name="" value="">USB 3.0 (4.8Gbps) (3)</li>
-                  <li><input type="checkbox" name="" value="">USB 3.0 (5Gbps) 16TB (23)</li>
-                  <li><input type="checkbox" name="" value="">USB 3.1 (10Gbps) 1TB (13)</li>
-                  <li class="nav-filter-more"><i class="fa fa-chevron-down" aria-hidden="true"></i>Show more</li>
-                </ul>
+                <asp:PlaceHolder ID="navFilter" runat="server"></asp:PlaceHolder>
+                
               </ul>
             </div>
           </div>
