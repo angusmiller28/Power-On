@@ -39,6 +39,46 @@ namespace miller0061072133
             //parse control
             Control ctrl = Page.ParseControl(result);
             Placeholder1.Controls.Add(ctrl);
+
+            AddReviewsSection();
+        }
+
+        protected void AddReviewsSection()
+        {
+            ///////////////////////
+            // Add review section
+            ///////////////////////
+            HtmlGenericControl container = new HtmlGenericControl("div");
+            HtmlGenericControl rating = new HtmlGenericControl("input");
+            HtmlGenericControl comment = new HtmlGenericControl("textarea");
+
+            // Set attributes
+            rating.Attributes.Add("type", "text");
+
+            rating.InnerText = "Rating";
+            comment.InnerText = "This is a comment";
+
+            container.Controls.Add(rating);
+            container.Controls.Add(comment);
+
+            addReviewContainer.Controls.Add(container);
+
+            ///////////////////////
+            // Users Review section
+            ///////////////////////
+            container = new HtmlGenericControl("div");
+            HtmlGenericControl name = new HtmlGenericControl("h2");
+            comment = new HtmlGenericControl("p");
+
+            name.InnerText = "Angus Miller";
+            comment.InnerText = "This is a comment";
+
+            container.Controls.Add(name);
+            container.Controls.Add(comment);
+
+            // attributes
+            container.ID = "product-review-card";
+            reviewContainer.Controls.Add(container);
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -58,6 +98,10 @@ namespace miller0061072133
             }
         }
 
+        protected void btn_Add_Review_Click(object sender, EventArgs e)
+        {
+            
+        }
 
         protected void Button_Click1(object sender, EventArgs e)
         {
@@ -88,20 +132,6 @@ namespace miller0061072133
             );
 
             Response.Redirect("ShoppingCart.aspx");
-        }
-
-        private void AddToShoppingCart(int ProductID)
-        {
-            
-            //HttpCookieCollection myHTTPCookieCollection = new HttpCookieCollection();
-
-            // Create product id cookie
-            //HttpCookie productID = new HttpCookie("ProductID");
-            //productID.Value = get_productID();
-            //myHTTPCookieCollection.Add(productID);
-
-            //Session.Add("myHTTPCookieCollection", myHTTPCookieCollection);
-            //Response.Redirect("DisplayCookies.aspx");
         }
 
         protected string get_productID()

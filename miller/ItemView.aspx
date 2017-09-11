@@ -38,7 +38,18 @@
           </div>
           <section>
              <asp:Label ID="product_id" runat="server" Text="Label" style="display: none"></asp:Label>
+
               <asp:Placeholder id="Placeholder1" runat="server" />
+
+              <div id="product-content-description">
+                <h1 id="reviews">Reviews</h1>
+                <!-- Product Review -->
+                <asp:Button runat="server" ID="Button1" class="btn" Text="Add Review" onclick="btn_Add_Review_Click" />  
+                <asp:PlaceHolder ID="addReviewContainer" runat="server"></asp:PlaceHolder>
+                <asp:PlaceHolder ID="reviewContainer" runat="server"></asp:PlaceHolder>
+                
+              </div>
+              
           </section>
         </section>
         <uc3:footer ID="footer1" runat="server" />
